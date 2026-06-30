@@ -11,7 +11,7 @@ module TechlogApp
     config.autoload_lib(ignore: %w[assets tasks])
 
     # ジェネレータ
-    config.generates do |g|
+    config.generators do |g|
       g.assets false
       g.helper false
       g.test_framework :rspec
