@@ -15,8 +15,8 @@ describe User do
     end
 
     # described_classは Userクラスを指す
-    # subject変数に入れる
-    subject { described_class.first }
+    # subject変数に入れる User.first
+    subject { described_class.first } 
     
     it '事前に作成した通りのUserを返す' do
       expect(subject.nickname).to eq('山田花子')
