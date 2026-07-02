@@ -3,7 +3,8 @@ require 'rails_helper'
 describe 'Post', type: :system do
   before do
     driven_by :rack_test
-    @user = create(:user) # ログイン用ユーザー作成
+    @user = create(:user)
+    @post = create(:post, title: 'RSpec学習完了', content: 'System Specを作成した', user_id: @user.id )
   end
  
   # 投稿フォーム
@@ -55,6 +56,16 @@ describe 'Post', type: :system do
           expect(page).to have_field('post_content', with: content)
         end
       end
+    end
+  end
+
+  describe 'ログ詳細機能の検証' do
+    before { visit "posts/#{@post.id}" }
+
+    it 'Postの詳細が表示される' do
+      expect(page).to have_content('RSpec学習完了')
+      expect(page).to have_content('System Specを作成した')  
+      expect(page).to have_content(@user.nickname)  
     end
   end
 end

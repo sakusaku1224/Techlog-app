@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   # ログインしているか判断
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :set_post, only: [:show, :destroy]
 
   def index
   end
@@ -23,10 +22,11 @@ class PostsController < ApplicationController
   end
 
   def show
-    # ID取得済み
+    @post = Post.find(params[:id])
   end
 
   def destroy
+    @post = current_user.posts.find(params[:id])
     @post.destroy
     redirect_to root_path
   end
@@ -35,9 +35,5 @@ class PostsController < ApplicationController
   # ストロングパラメータ
   def post_params
     params.require(:post).permit(:title, :content)
-  end
-  # ID取得
-  def set_post
-    @post = current_user.posts.find(params[:post_id])
   end
 end
