@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   # ログインしているか判断
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :destroy]
 
   def index
     # 作成順に並べる
@@ -28,9 +28,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = current_user.posts.find(params[:id])
-    @post.destroy
-    redirect_to root_path
+    post = current_user.posts.find(params[:id])
+    post.destroy
+    redirect_to posts_path, notice: '投稿が削除されました'
   end
 
   private
