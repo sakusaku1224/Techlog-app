@@ -12,9 +12,11 @@
                 by <%= link_to post.user.nickname, user_path(post.user), class: "hover:text-indigo-600 hover:font-bold" %>
               </p>
             </div>
+            <%= link_to "詳細を見る", post_path(post),
+              class: "text-sm bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white py-1 px-3 border border-blue-500 hover:border-transparent rounded hover:cursor-pointer" %>
           </div>
         </div>
- 
+
         <div class="px-2">
           <%# ３行まで表示 %>
           <p class="focus:outline-none text-sm leading-5 py-4 text-gray-600 line-clamp-3 overflow-hidden"><%= post.content %></p>

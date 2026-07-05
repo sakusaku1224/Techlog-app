@@ -13,8 +13,13 @@
           <%# ログインしているかつ、自分のidであること %>
           <%  if user_signed_in? %>
             <% if @post.user_id == current_user.id %>
-              <%= button_to "削除", post_path(@post), method: :delete,
-              class: "text-sm bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white py-1 px-3 border border-blue-500 hover:border-transparent rounded hover:cursor-pointer" %>
+              <div class="flex gap-2">
+              <%= link_to "編集", edit_post_path(@post),
+                class: "text-sm bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white py-1 px-3 border border-blue-500 hover:border-transparent rounded hover:cursor-pointer" %>
+
+                <%= button_to "削除", post_path(@post), method: :delete,
+                class: "text-sm bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white py-1 px-3 border border-blue-500 hover:border-transparent rounded hover:cursor-pointer" %>
+              </div>
             <% end %>
           <% end %>
         </div>

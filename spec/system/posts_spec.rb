@@ -154,4 +154,38 @@ describe 'Post', type: :system do
       end
     end
   end
+
+  # 以下自作テスト
+  describe '編集・更新ページの検証' do
+    before do
+      sign_in @user
+      visit "/posts/#{@post.id}/edit"
+    end
+    context '更新に成功した場合' do
+      it '更新ボタンを押すと内容が更新される' do
+        fill_in 'post_title', with: '更新後タイトル'
+        fill_in 'post_content', with: '更新後本文'
+        click_button 'ログを更新'
+
+        expect(@post.reload.title).to eq('更新後タイトル')
+        expect(@post.reload.content).to eq('更新後本文')
+        expect(page).to have_content('投稿を更新しました')
+        expect(current_path).to eq('/posts')
+      end
+    end
+
+    context '更新に失敗した場合' do
+      before do
+        fill_in 'post_title', with: ''
+        click_button 'ログを更新'
+      end
+      it 'エラーメッセージが表示される' do
+        expect(page).to have_content('更新に失敗しました')
+      end
+
+      it '投稿の内容は変わらない' do
+        expect(@post.reload.title).to eq('RSpec学習完了')
+      end
+    end
+  end
 end
