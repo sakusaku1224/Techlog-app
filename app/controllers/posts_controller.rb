@@ -3,6 +3,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
+    # 作成順に並べる
+    @posts = Post.limit(10).order(created_at: :desc)
   end
 
   def new
@@ -14,7 +16,7 @@ class PostsController < ApplicationController
     # ログインユーザのIDを紐付ける(定型)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to root_path, notice: '投稿しました'
+      redirect_to posts_path, notice: '投稿しました'
     else
       flash.now[:alert] = '投稿に失敗しました'
       render :new
