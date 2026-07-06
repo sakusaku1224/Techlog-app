@@ -16,8 +16,7 @@
 - Tailwind CSS
 - SQLite3(開発・テスト環境) / PostgreSQL(本番環境)
 - RSpec / FactoryBot / Capybara(テスト)
-- RuboCop / Brakeman / bundler-audit(静的解析)
-- GitHub Actions(CI)
+- RuboCop
 - Render(デプロイ)
 
 ## 機能一覧
