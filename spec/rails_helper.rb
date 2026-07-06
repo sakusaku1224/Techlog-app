@@ -72,4 +72,5 @@ RSpec.configure do |config|
   # sign_in user
   config.include Devise::Test::IntegrationHelpers, type: :system
   config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include FactoryBot::Syntax::Methods
 end
