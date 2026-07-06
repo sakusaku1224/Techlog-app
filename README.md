@@ -39,21 +39,6 @@
   - 更新成功時・失敗時それぞれの挙動の検証
 - 削除機能について、「別のユーザーがログインしている場合」の権限チェックのテストを自作で追加
 - 詳細ページの編集・削除ボタンなど、細かいUI調整
-- GitHub ActionsのCI設定修正(RSpecが正しく実行されるように)、RuboCop指摘対応など、開発環境まわりの改善
 
-## テスト
-
-RSpecを使用しています。
-
-```bash
-bin/rspec
-```
-
-## セットアップ
-
-```bash
-bundle install
-bin/rails db:setup
-bin/rails s
 ```
 
