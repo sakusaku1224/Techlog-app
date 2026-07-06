@@ -7,8 +7,16 @@ class PostsController < ApplicationController
     @posts = Post.limit(10).order(created_at: :desc)
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def new
     @post = Post.new
+  end
+
+  def edit
+    # 取得済み
   end
 
   def create
@@ -19,16 +27,8 @@ class PostsController < ApplicationController
       redirect_to posts_path, notice: '投稿しました'
     else
       flash.now[:alert] = '投稿に失敗しました'
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
-  end
-
-  def show
-    @post = Post.find(params[:id])
-  end
-
-  def edit
-    # 取得済み
   end
 
   def update
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
       redirect_to posts_path, notice: '投稿を更新しました'
     else
       flash.now[:alert] = '更新に失敗しました'
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 
@@ -46,10 +46,12 @@ class PostsController < ApplicationController
   end
 
   private
+
   # ストロングパラメータ
   def post_params
     params.require(:post).permit(:title, :content)
   end
+
   def set_post
     @own_post = current_user.posts.find(params[:id])
   end
