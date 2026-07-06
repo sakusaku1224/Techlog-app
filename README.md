@@ -4,7 +4,7 @@
 
 以下のUdemy講座を参考に、Ruby on Rails・RSpecを学習しながら作成しました。
 
-- [Ruby on Rails×RSpecで学ぶ実践的なテスト駆動開発](https://www.udemy.com/course/ruby-on-rails-rspec/)
+- https://www.udemy.com/course/ruby-on-rails-rspec/?couponCode=26BBPAAMXVNKR
 
 講座の内容をベースにしつつ、一部は講座の範囲を超えて自分で機能追加・実装しています(詳細は下記「自分で追加した機能」を参照)。
 
